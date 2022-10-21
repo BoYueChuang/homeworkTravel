@@ -1,0 +1,80 @@
+
+//置中
+@mixin center($w , $top:0 , $bgc:null){
+   width: $w;  
+   margin: $top auto 0;
+   background-color:$bgc;
+} // 預設值 null
+
+@mixin box-center(){
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+@mixin btn($w , $p , $bgc , $r:null){
+   width:$w ;
+   padding:$p ;
+   background-color: $bgc;
+   text-align: center;
+   border-radius: $r;
+   transition: all .3s ease ;
+   cursor: pointer;
+   &:hover {
+      background-color: darken($bgc , 20);
+   }
+}
+
+//手機板
+@mixin m(){
+   @media screen and (max-width: $m) {
+      @content;    
+   }
+}
+
+@mixin t(){
+   @media screen and (max-width: $t) {
+      @content;    
+   }
+}
+
+//font style
+@mixin fontstyle($size , $f:default){
+   @if $f == bold{
+      font-weight: bold;
+   }
+   @else if $f == default{
+      font-weight: 400;
+      font-size: $size;
+   }
+   @else if $f == thin{
+      font-weight: 100;
+      font-size: $size;
+   }
+}
+
+//space
+@mixin space($num){
+   @for $i from 1 to $num{
+      .space#{$i}{
+       margin-top:$i * 1px;
+      }
+   }
+}
+
+//grid
+@mixin grid($col, $breakpoint:null){
+   @for $a from 1 through $col{
+      @if $breakpoint != null{
+         .col-#{$breakpoint}-#{$a}{
+         width: ($a / $col) * 100%;
+         box-sizing: border-box;
+         }
+      }@else{
+         .col-#{$a}{
+            width: ($a / $col) * 100%;
+            box-sizing: border-box;
+         }
+      }
+   }
+}

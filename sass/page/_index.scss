@@ -1,0 +1,76 @@
+.wrapper{
+    .header{
+        padding: $space03;
+        text-align: center;
+        h1 {
+            text-align: center;
+            font-size: $h1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display:inline-block;
+            @include m(){
+                font-size: $h5;
+                color: #f20;
+            }
+        }
+    }
+    .headerSelect{
+        text-align: right;
+        select{
+            margin-right: $space03;
+            padding: $space01;
+            font-size: $h4;
+        }
+        
+    }
+    .travelImg{
+        
+        padding: $space01;
+        .travelImg_outer{
+            display: inline-block;
+            .travelImg{
+                margin: $space01;
+                border: 1px solid $gray01;
+                .main_name{
+                    font-size: $h4;
+                    text-align: center;
+                    padding: $space01;
+                }
+                .travelImg_main{
+                    max-width: 450px;
+                    cursor: pointer;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .btnSma{
+                    text-align: center;
+                    .btn-small {
+                        padding: $space01;
+                        margin: 5px;
+                        
+                        
+                    }
+                }
+                
+            }
+        
+        }
+        
+        
+    }
+    .pagination{
+        
+        .pagination-ul{
+            display: flex; 
+            justify-content: center;
+            padding: $space02;
+            li{
+                a{
+                    font-size:$h3;
+                    text-decoration: none;
+                    padding: 0px 10px;
+                }
+            }
+        }
+    }
+}

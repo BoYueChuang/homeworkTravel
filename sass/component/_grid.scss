@@ -1,0 +1,12 @@
+//desktop
+@include grid(12);
+
+//tablet
+@include t(){
+  @include grid(12, md);
+}
+
+//moblie
+@include m(){
+  @include grid(12, sm);
+}

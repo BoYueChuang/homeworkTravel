@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
+</head>
+
+<body>
+    <div class="wrapper" id="wrapper">
+        <header class="header">
+            <h1>旅遊 GO GO GO</h1>
+        </header>
+        <main id="main">
+
+        </main>
+    </div>
+
+<script src="https://unpkg.com/vue@2"></script>
+<script>
+    new Vue({
+    el: '#main',
+    data:{
+        travelData:[], //總筆數
+        travelDataId:[], //include ID
+        newDataId:[], // mounted ID
+        select:"請選擇", //下拉選單
+        showPage:1,//顯示第一頁
+        travelDataLength:null,//資料長度
+        pageTotal:0,//總頁碼
+        travelDataPage:8,//一頁筆數
+    },
+    mounted() {
+        fetch('./response_1666164148531.json')
+        .then((response) => {
+            return response.json();
+        })
+        .then((userArr) => {
+            console.log(userArr.data);
+            this.travelData = userArr.data
+            let newDataId = localStorage.getItem('dataId') //抓值
+            this.newDataId = JSON.parse(newDataId) //變成物件
+            if(this.newDataId !== null){
+                this.travelDataId = this.newDataId
+            }
+            this.travelDataLength = this.travelData.length //資料長度
+            this.pageTotal = Math.ceil(this.travelDataLength/this.travelDataPage) //page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
+        })
+        .catch((error) => {
+            console.log(`Error: ${error}`);
+        })
+    },
+    computed: {
+        travelDataNewList(){
+            const vw = this;
+            this.travelData.slice((this.showPage-1)*8, (this.showPage-1)*8+8);
+            if (this.select === "請選擇") {
+                return this.travelData.slice((this.showPage-1)*8, (this.showPage-1)*8+8);
+            }else{
+                let resultArr = [...this.travelData];
+
+                if (this.select !== "請選擇") {
+                    resultArr = resultArr.filter(function(item){
+                        return item.id == vw.select
+                    })
+                }
+                return resultArr;
+            }
+        },
+    },
+    template:`
+    <div>
+            <div class="headerSelect">
+                <div>
+                    <select name="" id="" v-model="select">
+                        <option value="請選擇" selected>請選擇</option>
+                        <option :value='travelDataId.id' v-for="travelDataId in travelData">{{travelDataId.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="travelImg">
+                <div class="travelImg_outer" v-for = "(travelDataList , index) in travelDataNewList">
+                    <div class="travelImg">
+                        <div class="travelImg_main">
+                            <img :src='travelDataList.images[0].src' alt="">
+                        </div>
+                        <div class="main_name">
+                            <h1>{{travelDataList.name}}</h1>
+                        </div>
+                        <div class="btnSma">
+                            <button class="btn-small" @click="addLove(travelDataList.id)">加到我的最愛</button>
+                            <button class="btn-small" @click="removeLove(travelDataList.id)">移除我的最愛</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <ul class="pagination-ul">
+                    <li><a href="#" @click="left()"><i class="fa-solid fa-chevron-left"></i></a></li>
+                    <li v-for="(page,i) in pageTotal" ><a href="#" @click="pageid(page)">{{page}}</a></li>
+                    <li><a href="#" @click="right()"><i class="fa-solid fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+    </div>
+    `,
+    methods: {
+        addLove(i){
+            if(!this.travelDataId.includes(i)){
+                this.travelDataId.unshift(i)
+                localStorage.setItem('dataId',JSON.stringify(this.travelDataId))
+            }else if(this.travelDataId.includes(i)){
+                alert('已加到我的最愛')
+            }
+        },
+        removeLove(i){
+            let dataId = i
+            if(this.travelDataId.includes(i)){
+                this.travelDataId = this.travelDataId.filter(function(item) {
+                    return item != dataId
+                });
+                this.newDataId = this.travelDataId
+                localStorage.setItem('dataId',JSON.stringify(this.travelDataId))
+                alert('已從我的最愛移除')
+            }else if(!this.travelDataId.includes(i)){
+                alert('未加入我的最愛')
+            }
+        },
+        left(){
+            this.showPage--
+            if(this.showPage<=0){
+                this.showPage= 1
+            }
+            this.select="請選擇"
+        },
+        right(){
+            this.showPage++
+            if(this.showPage >= this.pageTotal){
+                this.showPage=  this.pageTotal
+            }
+            this.select="請選擇"
+        },
+        pageid(i){
+            this.showPage = i
+            this.select="請選擇"
+        },
+    }
+
+})
+</script>
+
+</body>
+
+</html>
