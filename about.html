@@ -11,32 +11,152 @@
 </head>
 
 <body>
-    <div class="wrapper about">
-        <header>
-            <h1>首頁<span>slogan</span></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">index</a></li>
-                    <li><a href="about.html">about</a></li>
-                    <li><a href="#">item</a></li>
-                    <li><a href="#">item</a></li>
-                    <li><a href="#">item</a></li>
-                    <li><a href="#">item</a></li>
-                </ul>
-            </nav>
+  <div class="wrapper" id="wrapper">
+    <header class="header">
+        <h1>我的最愛</h1>
+    </header>
+    <main id="main">
+    </main>
+</div>
 
-        </header>
-      <div class="btn-default">
-        按鈕
-      </div>
-      <div class="btn-large">
-        按鈕
-      </div>
-      <div class="btn-small">
-        按鈕
-      </div>
-    </div>
+<script src="https://unpkg.com/vue@2"></script>
+<script src="https://unpkg.com/vue-router@3"></script>
+<script>
+  new Vue({
+  
+  el: '#main',
 
+  data:{
+      travelData:[], //總筆數
+      travelDataId:[], //include ID
+      travelDataTotal:[], //like
+      newDataId:[], // mounted ID
+      newTravelDataTotal:[], // mounted like
+      select:"請選擇", //下拉選單
+      showPage:1,//顯示第一頁
+      travelDataLength:null,//資料長度
+      pageTotal:0,//總頁碼
+      travelDataPage:4,//一頁筆數
+      travelDataTotalLen:0, //like 筆數
+      asd:true,
+      qwe:false,
+  },
+  mounted() {
+      let newDataTotal = localStorage.getItem('data') //抓值
+      this.travelData = JSON.parse(newDataTotal) //變成物件
+      this.travelDataTotalLen = this.travelData.length
+      this.pageTotal = Math.ceil(this.travelDataLength/this.travelDataPage) //page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
+  },
+  computed: {
+      travelDataNewList(){
+          const vw = this;
+          this.travelData.slice((this.showPage-1)*4, (this.showPage-1)*4+4);
+          if (this.select === "請選擇") {
+              return this.travelData.slice((this.showPage-1)*8, (this.showPage-1)*8+8);
+          }else{
+              let resultArr = [...this.travelData];
+
+              if (this.select !== "請選擇") {
+                  resultArr = resultArr.filter(function(item){
+                      return item.id == vw.select
+                  })
+              }
+              return resultArr;
+          }
+      },
+  },
+  template:`
+  <div>
+          <div class="headerSelect">
+              <div>
+                  <div class="liked">
+                      <a href="./about.html">我的最愛</a>
+                      <span>{{travelDataTotalLen}}</span>     
+                  </div>
+                  
+              </div>
+          </div>
+          <div class="travelImg">
+              <div class="travelImg_outer" v-for = "(travelDataList ,index) in travelData">
+                  <div class="travelImg">
+                      <div class="travelImg_main">
+                          <img :src='travelDataList.image' alt="">
+                      </div>
+                      <div class="main_name">
+                          <input :value ="travelDataList.name" v-if="qwe"></input>
+                          <h1 v-if="asd">{{travelDataList.name}}</h1>
+                      </div>
+                      <div class="main_address">
+                          <h3>{{travelDataList.address}}</h3>
+                      </div>
+                      <div class="main_introduction">
+                          <h3 ellipsis>{{travelDataList.intro | ellipsis}}</h3>
+                      </div>
+                      <div class="btnSma">
+                          <button class="btn-small" @click="edit(index)">編輯資料</button>
+                          <button class="btn-small" @click="removeLove(travelDataList.id,travelDataList.name,travelDataList.intro,travelDataList.address,travelDataList.tel,index)">移除我的最愛</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="pagination">
+              <ul class="pagination-ul">
+                  <li><a href="#" @click="left()"><i class="fa-solid fa-chevron-left"></i></a></li>
+                  <li v-for="(page,i) in pageTotal" ><a href="#" @click="pageid(page)">{{page}}</a></li>
+                  <li><a href="#" @click="right()"><i class="fa-solid fa-chevron-right"></i></a></li>
+              </ul>
+          </div>
+  </div>
+  `,
+  methods: {
+      edit(index){
+        console.log(this.travelData[index]);
+        // this.travelData[index]
+        this.asd = !this.asd
+        this.qwe = !this.qwe
+      },
+      removeLove(id,name,intro,address,tel,index){
+          let dataId = id
+          this.travelData = this.travelData.filter(function(item) {
+                  return item.id != dataId
+          });
+          localStorage.setItem('data',JSON.stringify(this.travelData))
+          alert('已從我的最愛移除')
+          this.travelDataTotalLen = this.travelData.length
+      },
+      left(){
+          this.showPage--
+          if(this.showPage<=0){
+              this.showPage= 1
+          }
+          this.select="請選擇"
+      },
+      right(){
+          this.showPage++
+          if(this.showPage >= this.pageTotal){
+              this.showPage=  this.pageTotal
+          }
+          this.select="請選擇"
+      },
+      pageid(i){
+          this.showPage = i
+          this.select="請選擇"
+      },
+  },
+  filters:{
+      ellipsis(value){
+          if (!value) return '';
+          if (value.length > 10) {
+              return value.slice(0,150) + '...'
+          }
+          return value
+      }
+  },
+  
+
+})
+</script>
 </body>
 
 </html>

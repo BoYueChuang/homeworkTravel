@@ -20,6 +20,36 @@
             padding: $space01;
             font-size: $h4;
         }
+        .liked{
+            position: relative;
+            margin-bottom: 20px;
+            a{
+                text-decoration: none;
+                border: 2px solid #b546bb;
+                color: #b546bb;
+                padding: 10px;
+                &:hover{
+                    border: 2px solid #b546bb;
+                    color: white;
+                    background-color: #b546bb;
+                }  
+            }
+            span{
+                display: inline-block;
+                text-align: center;
+                border: 1px solid rgb(136, 172, 27);
+                background-color: rgb(136, 172, 27);
+                color: aliceblue;
+                border-radius: 50%;
+                width: 30px;
+                position: absolute;
+                right: -10px;
+                top: -20px;
+            }
+            margin-right: $space03;
+            padding: $space01;
+            font-size: $h3;
+        }
         
     }
     .travelImg{
@@ -32,6 +62,18 @@
                 border: 1px solid $gray01;
                 .main_name{
                     font-size: $h4;
+                    text-align: center;
+                    padding: $space01;
+                }
+                .main_address{
+                    
+                    font-size: 14px;
+                    text-align: center;
+                    padding: $space01;
+                }
+                .main_introduction{
+                    max-width: 400px;
+                    font-size: 14px;
                     text-align: center;
                     padding: $space01;
                 }

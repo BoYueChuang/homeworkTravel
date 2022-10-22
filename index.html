@@ -16,7 +16,6 @@
             <h1>旅遊 GO GO GO</h1>
         </header>
         <main id="main">
-
         </main>
     </div>
 
@@ -38,6 +37,7 @@
         travelDataLength:null,//資料長度
         pageTotal:0,//總頁碼
         travelDataPage:8,//一頁筆數
+        travelDataTotalLen:0//like 筆數
     },
     mounted() {
         fetch('./response_1666164148531.json',{
@@ -50,16 +50,12 @@
         .then((userArr) => {
             console.log(userArr.data);
             this.travelData = userArr.data
-            // let newDataId = localStorage.getItem('dataId') //抓值
-            // this.newDataId = JSON.parse(newDataId) //變成物件
-            // if(this.newDataId !== null){
-            //     this.travelDataId = this.newDataId
-            // }
             let newDataTotal = localStorage.getItem('data') //抓值
             this.newTravelDataTotal = JSON.parse(newDataTotal) //變成物件
             if(this.newTravelDataTotal !== null){
                 this.travelDataTotal = this.newTravelDataTotal
             }
+            this.travelDataTotalLen = this.travelDataTotal.length
             this.travelDataLength = this.travelData.length //資料長度
             this.pageTotal = Math.ceil(this.travelDataLength/this.travelDataPage) //page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
         })
@@ -89,6 +85,10 @@
     <div>
             <div class="headerSelect">
                 <div>
+                    <div class="liked">
+                        <a href="./about.html">我的最愛</a>
+                        <span>{{travelDataTotalLen}}</span>     
+                    </div>
                     <select name="" id="" v-model="select">
                         <option value="請選擇" selected>請選擇</option>
                         <option :value='travelDataId.id' v-for="travelDataId in travelData">{{travelDataId.id}}</option>
@@ -104,9 +104,15 @@
                         <div class="main_name">
                             <h1>{{travelDataList.name}}</h1>
                         </div>
+                        <div class="main_address">
+                            <h3>{{travelDataList.address}}</h3>
+                        </div>
+                        <div class="main_introduction">
+                            <h3 ellipsis>{{travelDataList.introduction | ellipsis}}</h3>
+                        </div>
                         <div class="btnSma">
-                            <button class="btn-small" @click="addLove(travelDataList.id,travelDataList.name,travelDataList.introduction,travelDataList.address,travelDataList.tel,index)">加到我的最愛</button>
-                            <button class="btn-small" @click="removeLove(travelDataList.id,travelDataList.name,travelDataList.introduction,travelDataList.address,travelDataList.tel,index)">移除我的最愛</button>
+                            <button class="btn-small" @click="addLove(travelDataList.id,travelDataList.name,travelDataList.introduction,travelDataList.address,travelDataList.tel,index,travelDataList.images[0].src)">加到我的最愛</button>
+                            <button class="btn-small" @click="removeLove(travelDataList.id,travelDataList.name,travelDataList.introduction,travelDataList.address,travelDataList.tel,index,travelDataList.images[0].src)">移除我的最愛</button>
                         </div>
                     </div>
                 </div>
@@ -122,19 +128,21 @@
     </div>
     `,
     methods: {
-        addLove(id,name,intro,address,tel){
+        addLove(id,name,intro,address,tel,index,image){
+
             let travelDataId = {
                     "id": id,
                     "name": name, 
                     "intro": intro,
                     "address":address,
                     "tel":tel,
-                    "bool":0
+                    "image":image
             };
             this.travelDataTotal.push(travelDataId)
             this.travelDataTotal = [...new Set(this.travelDataTotal.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
             localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
             alert('加到我的最愛')
+            this.travelDataTotalLen = this.travelDataTotal.length
         },
         removeLove(id,name,intro,address,tel,index){
             let dataId = id
@@ -143,6 +151,7 @@
             });
             localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
             alert('已從我的最愛移除')
+            this.travelDataTotalLen = this.travelDataTotal.length
         },
         left(){
             this.showPage--
@@ -162,6 +171,15 @@
             this.showPage = i
             this.select="請選擇"
         },
+    },
+    filters:{
+        ellipsis(value){
+            if (!value) return '';
+            if (value.length > 10) {
+                return value.slice(0,150) + '...'
+            }
+            return value
+        }
     },
     
 
