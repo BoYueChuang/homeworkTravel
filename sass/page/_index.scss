@@ -8,8 +8,7 @@
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             display:inline-block;
             @include m(){
-                font-size: $h5;
-                color: #f20;
+                font-size: $h3;
             }
         }
     }
@@ -19,10 +18,21 @@
             margin-right: $space03;
             padding: $space01;
             font-size: $h4;
+            @include m(){
+                margin-right: 20px;
+                font-size: $h5;
+            }
         }
         .liked{
             position: relative;
             margin-bottom: 20px;
+            margin-right: $space02;
+            padding: $space01;
+            font-size: $h3;
+            @include m(){
+                margin-right: $space01;
+                font-size: $h5;
+            }
             a{
                 text-decoration: none;
                 border: 2px solid #b546bb;
@@ -45,18 +55,20 @@
                 position: absolute;
                 right: -10px;
                 top: -20px;
+                @include m(){
+                    width: 20px;
+                    right: 0px;
+                    top: -15px;
+                }
             }
-            margin-right: $space03;
-            padding: $space01;
-            font-size: $h3;
         }
         
     }
-    .travelImg{
-        
+    .travelImgWrapper{
+        display: flex;
+        flex-wrap: wrap;
         padding: $space01;
         .travelImg_outer{
-            display: inline-block;
             .travelImg{
                 margin: $space01;
                 border: 1px solid $gray01;
@@ -66,19 +78,20 @@
                     padding: $space01;
                 }
                 .main_address{
-                    
                     font-size: 14px;
                     text-align: center;
                     padding: $space01;
                 }
                 .main_introduction{
-                    max-width: 400px;
+                    max-width: 450px;
                     font-size: 14px;
                     text-align: center;
                     padding: $space01;
                 }
                 .travelImg_main{
                     max-width: 450px;
+                    margin: 0 auto;
+                    padding: 5px;
                     cursor: pointer;
                     img{
                         width: 100%;

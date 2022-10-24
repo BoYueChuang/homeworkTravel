@@ -19,6 +19,9 @@
             text-align: center;
             h1{
                 font-size: $h2;
+                @include m(){
+                    font-size: $h3;
+                }
             }
             @include m(){
                 padding: 16px 0 ;
@@ -29,7 +32,6 @@
         font-size: $h4 ;
         border-radius: 5px 5px 0 0;
         .travelImg_main{
-            
             max-width: 500px;
             width: 100%;
             margin: 0 auto;
@@ -47,6 +49,10 @@
                     margin-top: 10px;
                     width: 500px;
                     font-size: $h5;
+                    @include m(){
+                        width: 360px;
+                        font-size: $h6;
+                    }
                 }
                 textarea{
                     margin-top: 10px;
@@ -54,6 +60,11 @@
                     height: 300px;
                     font-size: $h5;
                     resize: none;
+                    @include m(){
+                        width: 360px;
+                        height: 300px;
+                        font-size: $h6;
+                    }
                 }
             }
             

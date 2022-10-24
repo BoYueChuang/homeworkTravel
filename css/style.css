@@ -56,53 +56,6 @@ table {
   border-spacing: 0;
 }
 
-.btn-default {
-  width: 150px;
-  padding: 15px;
-  background-color: #f20;
-  text-align: center;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
-  cursor: pointer;
-}
-
-.btn-default:hover {
-  background-color: #991400;
-}
-
-@media screen and (max-width: 996px) {
-  .btn-default {
-    width: 80%;
-    margin: 0 auto 0;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .btn-default {
-    width: 100%;
-  }
-}
-
-.btn-large {
-  width: 300px;
-  padding: 15px;
-  background-color: #0059ff;
-  text-align: center;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
-  cursor: pointer;
-}
-
-.btn-large:hover {
-  background-color: #003599;
-}
-
-@media screen and (max-width: 720px) {
-  .btn-large {
-    width: 100%;
-  }
-}
-
 .btn-small {
   width: 100px;
   padding: 10px;
@@ -118,9 +71,9 @@ table {
   background-color: #6e2a71;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 490px) {
   .btn-small {
-    width: 100%;
+    width: 70%;
   }
 }
 
@@ -174,7 +127,7 @@ table {
   width: 100%;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 490px) {
   .card {
     max-width: 375px;
     width: 100%;
@@ -189,7 +142,7 @@ table {
   position: relative;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 490px) {
   .card .cardUl {
     padding: 24px 0;
   }
@@ -202,7 +155,7 @@ table {
   color: #313131;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 490px) {
   .card .cardInner {
     padding: 20px 0;
     max-width: 375px;
@@ -222,10 +175,9 @@ table {
   display: inline-block;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 490px) {
   .wrapper .header h1 {
-    font-size: 18px;
-    color: #f20;
+    font-size: 28px;
   }
 }
 
@@ -239,12 +191,26 @@ table {
   font-size: 22px;
 }
 
+@media screen and (max-width: 490px) {
+  .wrapper .headerSelect select {
+    margin-right: 20px;
+    font-size: 18px;
+  }
+}
+
 .wrapper .headerSelect .liked {
   position: relative;
   margin-bottom: 20px;
-  margin-right: 30px;
+  margin-right: 20px;
   padding: 10px;
   font-size: 28px;
+}
+
+@media screen and (max-width: 490px) {
+  .wrapper .headerSelect .liked {
+    margin-right: 10px;
+    font-size: 18px;
+  }
 }
 
 .wrapper .headerSelect .liked a {
@@ -273,52 +239,63 @@ table {
   top: -20px;
 }
 
-.wrapper .travelImg {
+@media screen and (max-width: 490px) {
+  .wrapper .headerSelect .liked span {
+    width: 20px;
+    right: 0px;
+    top: -15px;
+  }
+}
+
+.wrapper .travelImgWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 10px;
 }
 
-.wrapper .travelImg .travelImg_outer {
-  display: inline-block;
-}
-
-.wrapper .travelImg .travelImg_outer .travelImg {
+.wrapper .travelImgWrapper .travelImg_outer .travelImg {
   margin: 10px;
   border: 1px solid #5f5f5f;
 }
 
-.wrapper .travelImg .travelImg_outer .travelImg .main_name {
+.wrapper .travelImgWrapper .travelImg_outer .travelImg .main_name {
   font-size: 22px;
   text-align: center;
   padding: 10px;
 }
 
-.wrapper .travelImg .travelImg_outer .travelImg .main_address {
+.wrapper .travelImgWrapper .travelImg_outer .travelImg .main_address {
   font-size: 14px;
   text-align: center;
   padding: 10px;
 }
 
-.wrapper .travelImg .travelImg_outer .travelImg .main_introduction {
-  max-width: 400px;
-  font-size: 14px;
-  text-align: center;
-  padding: 10px;
-}
-
-.wrapper .travelImg .travelImg_outer .travelImg .travelImg_main {
+.wrapper .travelImgWrapper .travelImg_outer .travelImg .main_introduction {
   max-width: 450px;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+}
+
+.wrapper .travelImgWrapper .travelImg_outer .travelImg .travelImg_main {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 5px;
   cursor: pointer;
 }
 
-.wrapper .travelImg .travelImg_outer .travelImg .travelImg_main img {
+.wrapper .travelImgWrapper .travelImg_outer .travelImg .travelImg_main img {
   width: 100%;
 }
 
-.wrapper .travelImg .travelImg_outer .travelImg .btnSma {
+.wrapper .travelImgWrapper .travelImg_outer .travelImg .btnSma {
   text-align: center;
 }
 
-.wrapper .travelImg .travelImg_outer .travelImg .btnSma .btn-small {
+.wrapper .travelImgWrapper .travelImg_outer .travelImg .btnSma .btn-small {
   padding: 10px;
   margin: 5px;
 }
@@ -367,7 +344,13 @@ table {
   font-size: 36px;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 490px) {
+  .wrapper .card .cardUl h1 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 490px) {
   .wrapper .card .cardUl {
     padding: 16px 0;
   }
@@ -411,12 +394,27 @@ table {
   font-size: 18px;
 }
 
+@media screen and (max-width: 490px) {
+  .wrapper .cardInner .travelInput div input {
+    width: 360px;
+    font-size: 16px;
+  }
+}
+
 .wrapper .cardInner .travelInput div textarea {
   margin-top: 10px;
   width: 500px;
   height: 300px;
   font-size: 18px;
   resize: none;
+}
+
+@media screen and (max-width: 490px) {
+  .wrapper .cardInner .travelInput div textarea {
+    width: 360px;
+    height: 300px;
+    font-size: 16px;
+  }
 }
 
 .wrapper .cardInner .btna3 {
