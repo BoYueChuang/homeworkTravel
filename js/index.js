@@ -67,46 +67,12 @@
                     })
                     
                 }else if(this.selectSort !== "請選擇種類"){
-                    // resultArr.forEach((element) => { //種類過濾不重複
-                    //     return element.category.filter(function(item){
-                    //         return item.id == vw.selectSort
-                    //     })
-                    // });
+                    const vl = this;
                     resultArr = resultArr.filter(function(item,index,arr){
-                        item.category.forEach(element => {
-                            return element.id == this.selectSort
-                        });
-                    })
-                    console.log(resultArr);
-
-
-                    // resultArr = resultArr.filter(function(item){
-                    //     item.category.forEach(element => {
-                    //         console.log(element.id);
-                    //         return vw.travelDataSort.findIndex(function(condition){
-                    //             // console.log(travelDataSort);
-                    //             return element.id.includes(condition);
-                    //         }) !== -1;
-                    //     });
-                    //     // console.log(item.category);
-                    //     // return vw.travelDataSort.findIndex(function(condition){
-                    //     //     return item.id.includes(condition);
-                    //     // }) !== -1;
-                    // })
-                    // for(let i = 0; i < resultArr.length ; i++){
-                    //     console.log(resultArr[i].category);
-                    // }
-                    // resultArr = resultArr.filter(function(item,i,arr){
-                    //     console.log(item.category);
-                    //     console.log(arr);
-                    // })
-                    // console.log(resultArr);
-                    // resultArr = resultArr.category.filter(function(item){
-                    //     // return vw.selectSort.findIndex(function(condition){
-                    //     //     return item.id.includes(condition);
-                    //     // }) !== -1;
-                    // })
-                    
+                        return item.category.filter(function(item2){
+                            return item2.id == vl.selectSort
+                        })
+                    })             
                 }
                 return resultArr;
                 
