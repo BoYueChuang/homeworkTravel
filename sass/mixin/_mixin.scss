@@ -62,19 +62,34 @@
    }
 }
 
-//grid
-@mixin grid($col, $breakpoint:null){
-   @for $a from 1 through $col{
-      @if $breakpoint != null{
-         .col-#{$breakpoint}-#{$a}{
-         width: ($a / $col) * 100%;
-         box-sizing: border-box;
-         }
-      }@else{
-         .col-#{$a}{
-            width: ($a / $col) * 100%;
-            box-sizing: border-box;
-         }
-      }
-   }
+
+
+//橘色彈窗
+@mixin card (){
+   max-width: 800px;
+   background-color: #F4F1EC;
+   /* margin: 100px auto 0; */
+   border-radius: 5px;
+   z-index: 40;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 100%;
 }
+
+@mixin cardInner($w){
+   width: $w;
+   margin: 0 auto;
+   padding: 40px 0;
+   color: #313131;
+}
+
+@mixin cardUl(){
+   background-color: #b546bb;
+   color: white;
+   padding: 20px 0;
+   border-radius: 5px 5px 0 0;
+   position: relative;
+}
+

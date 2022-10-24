@@ -10,9 +10,8 @@
 
 //component
 @import 'component/btn';
-@import 'component/grid';
 @import 'component/space';
-
+@import 'component/card';
 
 //page
 @import 'page/index';
@@ -21,156 +20,7 @@
 
 
 
-body {
-    margin: null;
-    color: $color;
-    background-color: $bcg;
-    font-size: $bodyFontsize;
-    padding: $body_padding;
-}
 
-.#{$class} {
-    background-image: url('#{$path}/img.png');
-}
-
-
-
-$a : 10px;
-
-.a {
-    $a: 20 px !default; //權重變最小
-    font-size: $a;
-    //$b: 30px !global;
-}
-//巢狀
-.wrapper {
-    width: 100%;
-    background-color: #fff;
-
-
-}
-
-
-@mixin c(){
-    width: 100px;
-    // @content;// 擴增屬性
- }
-
-.a {
-  @include c();
-  height: 100px;
-  background-color: #fff;
-}
-
-
-.b {
-  @include c();
-  margin-top: 100px;
-
-}
-
-.w{
-  width: 100em + 100;
-  height: 100 - 10 + px;
-  margin: 10 * 10 + px;
-  font: 100 / 25 + px;
-}
-
-
-
-// @if @else @else if
-
-$f : true;
-
-.d{
-  @if $f {
-    color: #000;
-  }
-  width: 100px;
-}
-
-@mixin layout($w){
-  @if $w == 100%{
-    width: 100%;
-  }@else{
-    @include center($w)
-  }
-}
-
-.container{
-  @include layout(100%);
-}
-
-.title{
-  @include fontstyle(48px, bold)
-}
-
-.subtitle{
-  @include fontstyle(20px, thin)
-}
-
-
-// for loop
-@for $i from 10 through 1 {
-  .e_#{$i}{
-    margin-top: $i * 1px;
-  }
-}
-
-
-//each迴圈
-//list
-$list : banner01 banner02 banner03 banner04;
-
-
-@each $img in $list{
-  .img-#{$img}{
-    background-image: url('images/#{$img}.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-}
-
-$map : (
-  'space1': '10px',
-  'space2': '20px',
-  'space3':'30px',
-  'space4':'40px'
-);
-
-@each $key ,$val in $map {
-  .#{$key}{
-    margin-top:$val;
-  }
-}
-
-$font:(
-    'heading1': 80px,
-    'heading2': 56px,
-    'heading3': 44px,
-
-);
-
-@each $title, $size in $font{
-  .#{$title}{
-    font-size: $size;
-  }
-}
-
-// color
-$color :(
-  'primary': #333,
-  'secondary': #aaa,
-  'third': #d9d9d9,
-);
-
-@each $title, $val in $color{
-  @for $i from 1 through 10{
-    .#{$title}#{$i}{
-      color: lighten($val, $i * 4%);
-    }
-  }
-}
 
 
 

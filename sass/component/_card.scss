@@ -1,0 +1,23 @@
+//橘色彈窗1
+.card{
+    @include card();    
+    @include m(){
+        max-width: 375px;
+        width: 100%;
+    }
+    .cardUl{ 
+        @include cardUl();
+        @include m(){
+            padding: 24px 0;
+        }
+    }
+    .cardInner{ 
+        @include cardInner(800px);
+        @include m(){
+            padding: 20px 0;
+            max-width: 375px;
+            width: 100%;
+        }
+    }    
+}
+
