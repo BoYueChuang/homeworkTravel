@@ -37,7 +37,7 @@ template:`
         <div class="headerSelect">
             <div>
                 <div class="liked">
-                    <a href="./about.html">我的最愛</a>
+                    <a href="./index.html">返回列表</a>
                     <span>{{travelDataTotalLen}}</span>     
                 </div>
             </div>

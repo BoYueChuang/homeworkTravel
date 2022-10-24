@@ -316,6 +316,20 @@ table {
   padding: 0px 10px;
 }
 
+.wrapper .travelPop {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.wrapper .travelPop div {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.wrapper .travelPop div p {
+  line-height: 1;
+}
+
 .wrapper .contactUSInner {
   z-index: 120;
   position: fixed;

@@ -7,14 +7,18 @@
         travelData:[], //總筆數
         travelDataId:[], //include ID
         travelDataTotal:[], //like
+        travelDataSort:[], //sort
+        travelDataSortTotal:[],
+        travelDataSortName:[], //sortName
         newDataId:[], // mounted ID
         newTravelDataTotal:[], // mounted like
-        select:"請選擇", //下拉選單
+        select:"請選擇景點", //下拉選單
+        selectSort:"請選擇種類", //下拉選單
         showPage:1,//顯示第一頁
         travelDataLength:null,//資料長度
         pageTotal:0,//總頁碼
         travelDataPage:8,//一頁筆數
-        travelDataTotalLen:0//like 筆數
+        travelDataTotalLen:0,//like 筆數
     },
     mounted() {
         fetch('./response_1666164148531.json',{
@@ -25,8 +29,17 @@
             return response.json();
         })
         .then((userArr) => {
-            console.log(userArr.data);
             this.travelData = userArr.data
+            this.travelData.forEach((element,i,arr) => { //種類過濾不重複
+                element.category.filter((item) => {
+                    let travelDataSort = {
+                        "id": item.id,
+                        "name": item.name, 
+                    };
+                    this.travelDataSort.push(travelDataSort)
+                    this.travelDataSort = [...new Set(this.travelDataSort.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
+                })
+            });
             let newDataTotal = localStorage.getItem('data') //抓值
             this.newTravelDataTotal = JSON.parse(newDataTotal) //變成物件
             if(this.newTravelDataTotal !== null){
@@ -43,18 +56,60 @@
     computed: {
         travelDataNewList(){
             const vw = this;
+            let resultArr = [...this.travelData];
             this.travelData.slice((this.showPage-1)*8, (this.showPage-1)*8+8);
-            if (this.select === "請選擇") {
+            if (this.select === "請選擇景點" && this.selectSort === "請選擇種類") {
                 return this.travelData.slice((this.showPage-1)*8, (this.showPage-1)*8+8);
             }else{
-                let resultArr = [...this.travelData];
-
-                if (this.select !== "請選擇") {
+                if (this.select !== "請選擇景點") {
                     resultArr = resultArr.filter(function(item){
                         return item.id == vw.select
                     })
+                    
+                }else if(this.selectSort !== "請選擇種類"){
+                    // resultArr.forEach((element) => { //種類過濾不重複
+                    //     return element.category.filter(function(item){
+                    //         return item.id == vw.selectSort
+                    //     })
+                    // });
+                    resultArr = resultArr.filter(function(item,index,arr){
+                        item.category.forEach(element => {
+                            return element.id == this.selectSort
+                        });
+                    })
+                    console.log(resultArr);
+
+
+                    // resultArr = resultArr.filter(function(item){
+                    //     item.category.forEach(element => {
+                    //         console.log(element.id);
+                    //         return vw.travelDataSort.findIndex(function(condition){
+                    //             // console.log(travelDataSort);
+                    //             return element.id.includes(condition);
+                    //         }) !== -1;
+                    //     });
+                    //     // console.log(item.category);
+                    //     // return vw.travelDataSort.findIndex(function(condition){
+                    //     //     return item.id.includes(condition);
+                    //     // }) !== -1;
+                    // })
+                    // for(let i = 0; i < resultArr.length ; i++){
+                    //     console.log(resultArr[i].category);
+                    // }
+                    // resultArr = resultArr.filter(function(item,i,arr){
+                    //     console.log(item.category);
+                    //     console.log(arr);
+                    // })
+                    // console.log(resultArr);
+                    // resultArr = resultArr.category.filter(function(item){
+                    //     // return vw.selectSort.findIndex(function(condition){
+                    //     //     return item.id.includes(condition);
+                    //     // }) !== -1;
+                    // })
+                    
                 }
                 return resultArr;
+                
             }
         },
     },
@@ -67,8 +122,12 @@
                         <span>{{travelDataTotalLen}}</span>     
                     </div>
                     <select name="" id="" v-model="select">
-                        <option value="請選擇" selected>請選擇</option>
-                        <option :value='travelDataId.id' v-for="travelDataId in travelData">{{travelDataId.id}}</option>
+                        <option value="請選擇景點" selected>請選擇景點</option>
+                        <option :value='travelDataId.id' v-for="travelDataId in travelData">{{travelDataId.name}}</option>
+                    </select>
+                    <select name="" id="" v-model="selectSort">
+                        <option value="請選擇種類" selected>請選擇種類</option>
+                        <option :value='travelDataSort.id' v-for="travelDataSort in travelDataSort">{{travelDataSort.name}}</option>
                     </select>
                 </div>
             </div>
@@ -76,7 +135,7 @@
                 <div class="travelImg_outer" v-for = "(travelDataList ,index) in travelDataNewList">
                     <div class="travelImg">
                         <div class="travelImg_main">
-                            <img :src='travelDataList.images[0].src' alt="">
+                            <img :src='travelDataList.images[2].src' alt="" @click="open(travelDataList.url)">
                         </div>
                         <div class="main_name">
                             <h1>{{travelDataList.name}}</h1>
@@ -108,8 +167,10 @@
     </div>
     `,
     methods: {
+        open(url){
+            window.open(url, '_blank');
+        },
         addLove(id,name,intro,address,tel,index,image){
-
             let travelDataId = {
                     "id": id,
                     "name": name, 
@@ -138,18 +199,21 @@
             if(this.showPage<=0){
                 this.showPage= 1
             }
-            this.select="請選擇"
+            this.select = "請選擇景點"
+            this.selectSort = "請選擇種類"
         },
         right(){
             this.showPage++
             if(this.showPage >= this.pageTotal){
                 this.showPage=  this.pageTotal
             }
-            this.select="請選擇"
+            this.select = "請選擇景點"
+            this.selectSort = "請選擇種類"
         },
         pageid(i){
             this.showPage = i
-            this.select="請選擇"
+            this.select = "請選擇景點"
+            this.selectSort = "請選擇種類"
         },
     },
     filters:{
