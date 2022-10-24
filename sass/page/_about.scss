@@ -22,8 +22,14 @@
                 @include m(){
                     font-size: $h3;
                 }
+                @include t(){
+                    font-size: $h3;
+                }
             }
             @include m(){
+                padding: 16px 0 ;
+            }
+            @include t(){
                 padding: 16px 0 ;
             }
         }
@@ -37,6 +43,16 @@
             margin: 0 auto;
             img{
                 width: 100%;
+                @include m(){
+                    display:block;
+                    margin: 0 auto;
+                    width: 90%;
+                }
+                @include t(){
+                    display:block;
+                    margin: 0 auto;
+                    width: 90%;
+                }
             }
         }
         .travelInput{
@@ -53,6 +69,10 @@
                         width: 360px;
                         font-size: $h6;
                     }
+                    @include t(){
+                        width: 360px;
+                        font-size: $h6;
+                    }
                 }
                 textarea{
                     margin-top: 10px;
@@ -61,6 +81,11 @@
                     font-size: $h5;
                     resize: none;
                     @include m(){
+                        width: 360px;
+                        height: 300px;
+                        font-size: $h6;
+                    }
+                    @include t(){
                         width: 360px;
                         height: 300px;
                         font-size: $h6;

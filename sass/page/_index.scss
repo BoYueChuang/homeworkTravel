@@ -15,18 +15,20 @@
     .headerSelect{
         text-align: right;
         select{
-            margin-right: $space03;
+            margin-right: $space04;
             padding: $space01;
             font-size: $h4;
+            margin-top: 10px;
             @include m(){
                 margin-right: 20px;
                 font-size: $h5;
+                // margin-top: 10px;
             }
         }
         .liked{
             position: relative;
             margin-bottom: 20px;
-            margin-right: $space02;
+            margin-right: $space03;
             padding: $space01;
             font-size: $h3;
             @include m(){
@@ -65,10 +67,11 @@
         
     }
     .travelImgWrapper{
+        margin: auto;
         display: flex;
         flex-wrap: wrap;
         padding: $space01;
-        justify-content: center;
+        max-width: 1770px;
         .travelImg_outer{
             .travelImg{
                 margin: $space01;

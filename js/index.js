@@ -68,10 +68,10 @@
                     
                 }else if(this.selectSort !== "請選擇種類"){
                     const vl = this;
-                    resultArr = resultArr.filter(function(item,index,arr){
-                        return item.category.filter(function(item2){
+                    resultArr = resultArr.filter(function(item){
+                        return (item.category.find(function(item2){
                             return item2.id == vl.selectSort
-                        })
+                        }))
                     })             
                 }
                 return resultArr;
@@ -91,7 +91,7 @@
                         <option value="請選擇景點" selected>請選擇景點</option>
                         <option :value='travelDataId.id' v-for="travelDataId in travelData">{{travelDataId.name}}</option>
                     </select>
-                    <select name="" id="" v-model="selectSort">
+                    <select name="" id="" v-model="selectSort" class="selectSort">
                         <option value="請選擇種類" selected>請選擇種類</option>
                         <option :value='travelDataSort.id' v-for="travelDataSort in travelDataSort">{{travelDataSort.name}}</option>
                     </select>
