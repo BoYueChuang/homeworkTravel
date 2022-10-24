@@ -254,6 +254,9 @@ table {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .wrapper .travelImgWrapper .travelImg_outer .travelImg {
@@ -274,14 +277,14 @@ table {
 }
 
 .wrapper .travelImgWrapper .travelImg_outer .travelImg .main_introduction {
-  max-width: 450px;
+  max-width: 400px;
   font-size: 14px;
   text-align: center;
   padding: 10px;
 }
 
 .wrapper .travelImgWrapper .travelImg_outer .travelImg .travelImg_main {
-  max-width: 450px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 5px;
   cursor: pointer;

@@ -68,6 +68,7 @@
         display: flex;
         flex-wrap: wrap;
         padding: $space01;
+        justify-content: center;
         .travelImg_outer{
             .travelImg{
                 margin: $space01;
@@ -83,13 +84,13 @@
                     padding: $space01;
                 }
                 .main_introduction{
-                    max-width: 450px;
+                    max-width: 400px;
                     font-size: 14px;
                     text-align: center;
                     padding: $space01;
                 }
                 .travelImg_main{
-                    max-width: 450px;
+                    max-width: 400px;
                     margin: 0 auto;
                     padding: 5px;
                     cursor: pointer;
