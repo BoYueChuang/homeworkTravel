@@ -18,12 +18,12 @@
         .cardUl{
             text-align: center;
             h1{
-                font-size: $h2;
+                font-size: $h4;
                 @include m(){
-                    font-size: $h3;
+                    font-size: $h4;
                 }
                 @include t(){
-                    font-size: $h3;
+                    font-size: $h4;
                 }
             }
             @include m(){

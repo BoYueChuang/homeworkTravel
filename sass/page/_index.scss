@@ -67,13 +67,17 @@
         
     }
     .travelImgWrapper{
-        margin: auto;
+        margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
+        justify-content:center;
         padding: $space01;
-        max-width: 1770px;
+        max-width: 1200px;
         .travelImg_outer{
+            // max-width: 500px;
+            margin: 0 20px;
             .travelImg{
+                max-width: 300px;
                 margin: $space01;
                 border: 1px solid $gray01;
                 .main_name{
@@ -87,13 +91,13 @@
                     padding: $space01;
                 }
                 .main_introduction{
-                    max-width: 400px;
+                    max-width: 300px;
                     font-size: 14px;
                     text-align: center;
                     padding: $space01;
                 }
                 .travelImg_main{
-                    max-width: 400px;
+                    max-width: 300px;
                     margin: 0 auto;
                     padding: 5px;
                     cursor: pointer;

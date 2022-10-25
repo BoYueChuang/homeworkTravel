@@ -17,7 +17,7 @@
         showPage:1,//顯示第一頁
         travelDataLength:null,//資料長度
         pageTotal:0,//總頁碼
-        travelDataPage:8,//一頁筆數
+        travelDataPage:6,//一頁筆數
         travelDataTotalLen:0,//like 筆數
     },
     mounted() {
@@ -57,9 +57,9 @@
         travelDataNewList(){
             const vw = this;
             let resultArr = [...this.travelData];
-            this.travelData.slice((this.showPage-1)*8, (this.showPage-1)*8+8);
+            this.travelData.slice((this.showPage-1)*6, (this.showPage-1)*6+6);
             if (this.select === "請選擇景點" && this.selectSort === "請選擇種類") {
-                return this.travelData.slice((this.showPage-1)*8, (this.showPage-1)*8+8);
+                return this.travelData.slice((this.showPage-1)*6, (this.showPage-1)*6+6);
             }else{
                 if (this.select !== "請選擇景點") {
                     resultArr = resultArr.filter(function(item){

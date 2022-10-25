@@ -270,17 +270,25 @@ table {
 }
 
 .wrapper .travelImgWrapper {
-  margin: auto;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 10px;
-  max-width: 1770px;
+  max-width: 1200px;
+}
+
+.wrapper .travelImgWrapper .travelImg_outer {
+  margin: 0 20px;
 }
 
 .wrapper .travelImgWrapper .travelImg_outer .travelImg {
+  max-width: 300px;
   margin: 10px;
   border: 1px solid #5f5f5f;
 }
@@ -298,14 +306,14 @@ table {
 }
 
 .wrapper .travelImgWrapper .travelImg_outer .travelImg .main_introduction {
-  max-width: 400px;
+  max-width: 300px;
   font-size: 14px;
   text-align: center;
   padding: 10px;
 }
 
 .wrapper .travelImgWrapper .travelImg_outer .travelImg .travelImg_main {
-  max-width: 400px;
+  max-width: 300px;
   margin: 0 auto;
   padding: 5px;
   cursor: pointer;
@@ -379,18 +387,18 @@ table {
 }
 
 .wrapper .card .cardUl h1 {
-  font-size: 36px;
+  font-size: 22px;
 }
 
 @media screen and (max-width: 490px) {
   .wrapper .card .cardUl h1 {
-    font-size: 28px;
+    font-size: 22px;
   }
 }
 
 @media screen and (max-width: 900px) {
   .wrapper .card .cardUl h1 {
-    font-size: 28px;
+    font-size: 22px;
   }
 }
 
