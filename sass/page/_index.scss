@@ -2,12 +2,18 @@
     .header{
         padding: $space03;
         text-align: center;
+        background-image: url("../images/header.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-bottom: 25px;
         h1 {
             text-align: center;
             font-size: $h1;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: 'monospace', '', Calibri, 'Trebuchet MS', sans-serif;
             display:inline-block;
-            margin: 20px 0;
+            margin: 50px 0;
+            color: white;
+            letter-spacing: 2px;
             @include m(){
                 font-size: $h3;
                 margin: 10px 0;
@@ -19,16 +25,6 @@
         .totalBtn{
             display: flex;
             justify-content: end;
-        }
-        select{
-            margin-right: $space04;
-            padding: $space01;
-            font-size: $h4;
-            margin-top: 10px;
-            @include m(){
-                margin-right: 20px;
-                font-size: $h5;
-            }
         }
         .liked{
             position: relative;
@@ -70,6 +66,17 @@
                 }
             }
         }
+        select{
+            margin-right: $space04;
+            padding: $space01;
+            font-size: $h4;
+            margin-top: 10px;
+            @include m(){
+                margin-right: 20px;
+                font-size: $h5;
+            }
+        }
+        
         
     }
     .travelImgWrapper{
@@ -80,12 +87,13 @@
         padding: $space01;
         max-width: 1200px;
         .travelImg_outer{
-            // max-width: 500px;
             margin: 0 20px;
             .travelImg{
+                padding: 2px;
                 max-width: 300px;
                 margin: $space01;
                 border: 1px solid $gray01;
+                overflow: hidden;
                 .main_name{
                     font-size: $h4;
                     text-align: center;
@@ -101,14 +109,18 @@
                     font-size: 14px;
                     text-align: center;
                     padding: $space01;
+                    line-height: 1.2;
                 }
                 .travelImg_main{
                     max-width: 300px;
                     margin: 0 auto;
-                    padding: 5px;
                     cursor: pointer;
+                    overflow: hidden;
                     img{
                         width: 100%;
+                        &:hover{
+                            width: 120%;
+                        }
                     }
                 }
                 .btnSma{
@@ -116,8 +128,6 @@
                     .btn-small {
                         padding: $space01;
                         margin: 5px;
-                        
-                        
                     }
                 }
                 
