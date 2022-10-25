@@ -1,3 +1,4 @@
+
 .wrapper {
     .contactUSInner{
         z-index: 120;
@@ -66,27 +67,27 @@
                     width: 500px;
                     font-size: $h5;
                     @include m(){
-                        width: 360px;
+                        width: 320px;
                         font-size: $h6;
                     }
                     @include t(){
-                        width: 360px;
+                        width: 320px;
                         font-size: $h6;
                     }
                 }
                 textarea{
                     margin-top: 10px;
                     width: 500px;
-                    height: 300px;
+                    height: 200px;
                     font-size: $h5;
                     resize: none;
                     @include m(){
-                        width: 360px;
+                        width: 320px;
                         height: 180px;
                         font-size: $h6;
                     }
                     @include t(){
-                        width: 360px;
+                        width: 320px;
                         height: 180px;
                         font-size: $h6;
                     }

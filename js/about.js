@@ -8,7 +8,7 @@ data:{
     select:"請選擇", //下拉選單
     showPage:1,//顯示第一頁
     pageTotal:0,//總頁碼
-    travelDataPage:4,//一頁筆數
+    travelDataPage:6,//一頁筆數
     travelDataTotalLen:0, //like 筆數
     isShow:false,
     travelId:null,
@@ -26,7 +26,7 @@ mounted() {
 },
 computed: {
     travelDataNewList(){
-        return this.travelData.slice((this.showPage-1)*4, (this.showPage-1)*4+4);
+        return this.travelData.slice((this.showPage-1)*6, (this.showPage-1)*6+6);
     },
 },
 template:`

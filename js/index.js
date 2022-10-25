@@ -78,6 +78,13 @@
                 
             }
         },
+        addBlock(){
+            // return(this.newTravelDataTotal.filter(element => {
+            //     console.log(element.id);
+            //     return 177;
+            // }))
+            return 177;
+        }
     },
     template:`
     <div>
@@ -116,7 +123,7 @@
                             <h3 ellipsis>{{travelDataList.introduction | ellipsis}}</h3>
                         </div>
                         <div class="btnSma">
-                            <button class="btn-small" @click="addLove(travelDataList.id,travelDataList.name,travelDataList.introduction,travelDataList.address,travelDataList.tel,index,travelDataList.images[0].src)">加到我的最愛</button>
+                            <button class="btn-small" @click="addLove(travelDataList.id,travelDataList.name,travelDataList.introduction,travelDataList.address,travelDataList.tel,index,travelDataList.images[0].src)" :style="{'opacity': travelDataList.id == addBlock ? 0.1 : 1 }">加到我的最愛</button>
                             <button class="btn-small" @click="removeLove(travelDataList.id,travelDataList.name,travelDataList.introduction,travelDataList.address,travelDataList.tel,index,travelDataList.images[0].src)">移除我的最愛</button>
                         </div>
                     </div>

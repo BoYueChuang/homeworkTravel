@@ -470,14 +470,14 @@ table {
 
 @media screen and (max-width: 490px) {
   .wrapper .cardInner .travelInput div input {
-    width: 360px;
+    width: 320px;
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 900px) {
   .wrapper .cardInner .travelInput div input {
-    width: 360px;
+    width: 320px;
     font-size: 16px;
   }
 }
@@ -485,14 +485,14 @@ table {
 .wrapper .cardInner .travelInput div textarea {
   margin-top: 10px;
   width: 500px;
-  height: 300px;
+  height: 200px;
   font-size: 18px;
   resize: none;
 }
 
 @media screen and (max-width: 490px) {
   .wrapper .cardInner .travelInput div textarea {
-    width: 360px;
+    width: 320px;
     height: 180px;
     font-size: 16px;
   }
@@ -500,7 +500,7 @@ table {
 
 @media screen and (max-width: 900px) {
   .wrapper .cardInner .travelInput div textarea {
-    width: 360px;
+    width: 320px;
     height: 180px;
     font-size: 16px;
   }
