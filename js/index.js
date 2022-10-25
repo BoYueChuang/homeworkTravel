@@ -79,20 +79,21 @@
             }
         },
         addBlock(){
-            // return(this.newTravelDataTotal.filter(element => {
-            //     console.log(element.id);
-            //     return 177;
-            // }))
-            // return 177;
+        
         }
     },
     template:`
     <div>
             <div class="headerSelect">
                 <div>
-                    <div class="liked">
-                        <a href="./about.html">我的最愛</a>
-                        <span>{{travelDataTotalLen}}</span>     
+                    <div class="totalBtn">
+                        <div class="liked">
+                            <a href="#" @click="addAll(travelData)">全部加到我的最愛</a>
+                        </div>
+                        <div class="liked">
+                            <a href="./about.html">我的最愛</a>
+                            <span>{{travelDataTotalLen}}</span>     
+                        </div>
                     </div>
                     <select name="" id="" v-model="select">
                         <option value="請選擇景點" selected>請選擇景點</option>
@@ -140,23 +141,46 @@
     </div>
     `,
     methods: {
+        addAll(all){
+            this.travelDataTotal = []
+            all.forEach(element => {
+                let travelDataId = {
+                    "id": element.id,
+                    "name": element.name, 
+                    "intro": element.introduction,
+                    "address":element.address,
+                    "tel":element.tel,
+                    "image":element.images[2].src
+                };
+                this.travelDataTotal.push(travelDataId)
+                localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
+                this.travelDataTotalLen = this.travelDataTotal.length
+            });
+            alert('全部加到我的最愛')
+        },
         open(url){
             window.open(url, '_blank');
         },
         addLove(id,name,intro,address,tel,index,image){
-            let travelDataId = {
+            if(this.travelDataTotalLen == this.travelData.length){
+                alert('已全部加到我的最愛')
+            }else{
+                let travelDataId = {
                     "id": id,
                     "name": name, 
                     "intro": intro,
                     "address":address,
                     "tel":tel,
                     "image":image
-            };
-            this.travelDataTotal.push(travelDataId)
-            this.travelDataTotal = [...new Set(this.travelDataTotal.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
-            localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
-            alert('加到我的最愛')
-            this.travelDataTotalLen = this.travelDataTotal.length
+                };
+                this.travelDataTotal.push(travelDataId)
+                this.travelDataTotal = [...new Set(this.travelDataTotal.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
+                //Set 中的元素 (element) 可以是任何資料型態，兩者不同的地方在於 Set 中所有的值都是唯一的 (unique values)，不會有重複的值，當你存入重複值 (duplicate values) 會被忽略。
+                localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
+                this.travelDataTotalLen = this.travelDataTotal.length
+                alert('加到我的最愛')
+            }
+            
         },
         removeLove(id,name,intro,address,tel,index){
             let dataId = id
@@ -164,8 +188,8 @@
                     return item.id != dataId
             });
             localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
-            alert('已從我的最愛移除')
             this.travelDataTotalLen = this.travelDataTotal.length
+            alert('已從我的最愛移除')
         },
         left(){
             this.showPage--

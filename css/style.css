@@ -194,16 +194,27 @@ table {
   font-size: 40px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: inline-block;
+  margin: 20px 0;
 }
 
 @media screen and (max-width: 490px) {
   .wrapper .header h1 {
     font-size: 28px;
+    margin: 10px 0;
   }
 }
 
 .wrapper .headerSelect {
   text-align: right;
+}
+
+.wrapper .headerSelect .totalBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
 }
 
 .wrapper .headerSelect select {
@@ -225,7 +236,7 @@ table {
   margin-bottom: 20px;
   margin-right: 30px;
   padding: 10px;
-  font-size: 28px;
+  font-size: 22px;
 }
 
 @media screen and (max-width: 490px) {
@@ -254,10 +265,11 @@ table {
   border: 1px solid #88ac1b;
   background-color: #88ac1b;
   color: aliceblue;
+  padding: 2px;
   border-radius: 50%;
-  width: 30px;
+  width: 27px;
   position: absolute;
-  right: -10px;
+  right: -5px;
   top: -20px;
 }
 

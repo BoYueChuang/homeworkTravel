@@ -132,6 +132,7 @@ methods: {
             }
             });
             localStorage.setItem('data',JSON.stringify(this.travelData))
+            alert("已儲存")
             this.isShow = !this.isShow
         }
     },
