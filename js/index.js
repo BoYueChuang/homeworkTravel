@@ -204,7 +204,7 @@
                 };
                 this.travelDataTotal.push(travelDataId)
                 this.travelDataTotal = [...new Set(this.travelDataTotal.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
-                //Set 中的元素 (element) 可以是任何資料型態，兩者不同的地方在於 Set 中所有的值都是唯一的 (unique values)，不會有重複的值，當你存入重複值 (duplicate values) 會被忽略。
+                //Set 中的元素 (element) 可以是任何資料型態，Set 中所有的值都是唯一的 (unique values)，不會有重複的值，當你存入重複值 (duplicate values) 會被忽略。
                 localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
                 this.travelDataTotalLen = this.travelDataTotal.length
                 swal({
