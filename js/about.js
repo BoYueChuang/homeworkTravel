@@ -2,7 +2,6 @@
 new Vue({
 
 el: '#main',
-
 data:{
     travelData:[], //總筆數
     select:"請選擇", //下拉選單
@@ -12,11 +11,11 @@ data:{
     travelDataTotalLen:0, //like 筆數
     isShow:false,
     travelId:null,
-    travelSrc:"",
-    travelName:"",
-    travelTel:"",
-    travelAddress:"",
-    travelIntro:"",
+    travelSrc:"", //pop
+    travelName:"",//pop
+    travelTel:"",//pop
+    travelAddress:"",//pop
+    travelIntro:"",//pop
 },
 mounted() {
     let newDataTotal = localStorage.getItem('data') //抓值

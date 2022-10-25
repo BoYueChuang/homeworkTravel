@@ -19,6 +19,8 @@
         pageTotal:0,//總頁碼
         travelDataPage:6,//一頁筆數
         travelDataTotalLen:0,//like 筆數
+        addAllLike:true,//addAllLike
+        cleanAllLike:false,//cleanAllLike
     },
     mounted() {
         fetch('./response_1666164148531.json',{
@@ -47,6 +49,13 @@
             }
             this.travelDataTotalLen = this.travelDataTotal.length
             this.travelDataLength = this.travelData.length //資料長度
+            if(this.travelData.length == this.travelDataTotalLen){
+                this.addAllLike = false
+                this.cleanAllLike = true
+            }else{
+                this.addAllLike = true
+                this.cleanAllLike = false
+            }
             this.pageTotal = Math.ceil(this.travelDataLength/this.travelDataPage) //page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
         })
         .catch((error) => {
@@ -88,7 +97,8 @@
                 <div>
                     <div class="totalBtn">
                         <div class="liked">
-                            <a href="#" @click="addAll(travelData)">全部加到我的最愛</a>
+                            <a href="#" @click="addAll(travelData)" v-if="addAllLike">全部加到我的最愛</a>
+                            <a href="#" @click="cleanAll" v-if="cleanAllLike">清空我的最愛</a>
                         </div>
                         <div class="liked">
                             <a href="./about.html">我的最愛</a>
@@ -141,6 +151,14 @@
     </div>
     `,
     methods: {
+        cleanAll(){
+            this.travelDataTotal = []
+            localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
+            this.travelDataTotalLen = this.travelDataTotal.length
+            this.addAllLike = true
+            this.cleanAllLike = false
+            alert('已清空我的最愛')
+        },
         addAll(all){
             this.travelDataTotal = []
             all.forEach(element => {
@@ -156,6 +174,8 @@
                 localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
                 this.travelDataTotalLen = this.travelDataTotal.length
             });
+            this.addAllLike = false
+            this.cleanAllLike = true
             alert('全部加到我的最愛')
         },
         open(url){
