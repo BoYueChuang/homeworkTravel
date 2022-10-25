@@ -157,7 +157,10 @@
             this.travelDataTotalLen = this.travelDataTotal.length
             this.addAllLike = true
             this.cleanAllLike = false
-            alert('已清空我的最愛')
+            swal({
+                title: "已清空我的最愛",
+                icon: "success",
+            });
         },
         addAll(all){
             this.travelDataTotal = []
@@ -176,14 +179,20 @@
             });
             this.addAllLike = false
             this.cleanAllLike = true
-            alert('全部加到我的最愛')
+            swal({
+                title: "全部加到我的最愛",
+                icon: "success",
+            });
         },
         open(url){
             window.open(url, '_blank');
         },
         addLove(id,name,intro,address,tel,index,image){
             if(this.travelDataTotalLen == this.travelData.length){
-                alert('已全部加到我的最愛')
+                swal({
+                    title: "已全部加到我的最愛",
+                    icon: "success",
+                });
             }else{
                 let travelDataId = {
                     "id": id,
@@ -198,7 +207,10 @@
                 //Set 中的元素 (element) 可以是任何資料型態，兩者不同的地方在於 Set 中所有的值都是唯一的 (unique values)，不會有重複的值，當你存入重複值 (duplicate values) 會被忽略。
                 localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
                 this.travelDataTotalLen = this.travelDataTotal.length
-                alert('加到我的最愛')
+                swal({
+                    title: "加到我的最愛",
+                    icon: "success",
+                });
             }
             
         },
@@ -209,7 +221,10 @@
             });
             localStorage.setItem('data',JSON.stringify(this.travelDataTotal))
             this.travelDataTotalLen = this.travelDataTotal.length
-            alert('已從我的最愛移除')
+            swal({
+                title: "已從我的最愛移除",
+                icon: "success",
+            });
         },
         left(){
             this.showPage--

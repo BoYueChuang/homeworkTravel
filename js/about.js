@@ -115,11 +115,20 @@ methods: {
     save(){
         let patternPhone =  /^(09)[0-9]{8}$/;
         if(this.travelName == "" || this.travelAddress == "" || this.travelIntro == "" || this.travelTel == ""){
-            alert('請輸入完整資訊')
+            swal({
+                title: "請輸入完整資訊",
+                icon: "error",
+            });
         }else if(this.travelIntro.length < 100){
-            alert('景點介紹不能低於100字')
+            swal({
+                title: "景點介紹不能低於100字",
+                icon: "error",
+            });
         }else if(!patternPhone.test(this.travelTel)){
-            alert('請輸入正確的手機格式')
+            swal({
+                title: "請輸入正確的手機格式",
+                icon: "error",
+            });
         }else{
             this.travelData.filter((element,index,arr) => {
             if(this.travelId == element.id){
@@ -131,7 +140,10 @@ methods: {
             }
             });
             localStorage.setItem('data',JSON.stringify(this.travelData))
-            alert("已儲存")
+            swal({
+                title: "已儲存",
+                icon: "success",
+            });
             this.isShow = !this.isShow
         }
     },

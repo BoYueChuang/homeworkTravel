@@ -387,6 +387,10 @@ table {
   line-height: 1;
 }
 
+.swal-button {
+  background-color: #b546bb;
+}
+
 .wrapper .contactUSInner {
   z-index: 120;
   position: fixed;
