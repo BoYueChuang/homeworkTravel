@@ -493,7 +493,7 @@ table {
 @media screen and (max-width: 490px) {
   .wrapper .cardInner .travelInput div textarea {
     width: 360px;
-    height: 300px;
+    height: 180px;
     font-size: 16px;
   }
 }
@@ -501,7 +501,7 @@ table {
 @media screen and (max-width: 900px) {
   .wrapper .cardInner .travelInput div textarea {
     width: 360px;
-    height: 300px;
+    height: 180px;
     font-size: 16px;
   }
 }

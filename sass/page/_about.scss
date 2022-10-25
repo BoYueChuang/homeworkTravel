@@ -82,12 +82,12 @@
                     resize: none;
                     @include m(){
                         width: 360px;
-                        height: 300px;
+                        height: 180px;
                         font-size: $h6;
                     }
                     @include t(){
                         width: 360px;
-                        height: 300px;
+                        height: 180px;
                         font-size: $h6;
                     }
                 }
