@@ -84,7 +84,6 @@ template:`
             <div class="cardInner">
                     <div class="travelImg_main">
                         <img alt="" :src="travelSrc">
-                        <img alt="" :src="travelSrc">
                     </div>
                 <div class="travelInput">
                     <div><label>名稱：</label><br><input v-model="travelName"></input></div>
