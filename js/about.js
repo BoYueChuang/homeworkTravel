@@ -1,6 +1,5 @@
 
 new Vue({
-
 el: '#main',
 data:{
     travelData:[], //總筆數
@@ -83,9 +82,10 @@ template:`
                 </li>
             </ul>
             <div class="cardInner">
-                <div class="travelImg_main">
-                    <img alt="" :src="travelSrc">
-                </div>
+                    <div class="travelImg_main">
+                        <img alt="" :src="travelSrc">
+                        <img alt="" :src="travelSrc">
+                    </div>
                 <div class="travelInput">
                     <div><label>名稱：</label><br><input v-model="travelName"></input></div>
                     <div><label>地址：</label><br><input v-model="travelAddress"></input></div>

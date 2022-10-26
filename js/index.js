@@ -8,10 +8,7 @@
         travelDataId:[], //include ID
         travelDataTotal:[], //like
         travelDataSort:[], //sort
-        travelDataSortTotal:[],
-        travelDataSortName:[], //sortName
-        newDataId:[], // mounted ID
-        newTravelDataTotal:[], // mounted like
+        newTravelDataTotal:[], // mounted like localStorage.getItem('data')
         select:"請選擇景點", //下拉選單
         selectSort:"請選擇種類", //下拉選單
         showPage:1,//顯示第一頁

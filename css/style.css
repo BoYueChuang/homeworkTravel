@@ -416,7 +416,7 @@ table {
 }
 
 .wrapper .card .cardUl h1 {
-  font-size: 22px;
+  font-size: 28px;
 }
 
 @media screen and (max-width: 490px) {
@@ -491,6 +491,13 @@ table {
   margin: 10px 0;
 }
 
+@media screen and (max-width: 490px) {
+  .wrapper .cardInner .travelInput div label {
+    width: 320px;
+    font-size: 18px;
+  }
+}
+
 .wrapper .cardInner .travelInput div input {
   margin-top: 10px;
   width: 500px;
@@ -522,7 +529,7 @@ table {
 @media screen and (max-width: 490px) {
   .wrapper .cardInner .travelInput div textarea {
     width: 320px;
-    height: 180px;
+    height: 150px;
     font-size: 16px;
   }
 }
@@ -530,7 +537,7 @@ table {
 @media screen and (max-width: 900px) {
   .wrapper .cardInner .travelInput div textarea {
     width: 320px;
-    height: 180px;
+    height: 150px;
     font-size: 16px;
   }
 }
